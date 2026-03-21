@@ -1152,11 +1152,11 @@ footer {
 .apoie-link:hover { gap: 10px; }
 
 /* ===== GALERIA ===== */
-#galeria { background: var(--primary); padding: 96px 0; }
+#galeria { background: var(--white); padding: 96px 0; }
 
 #galeria .section-tag { background: var(--accent); }
-#galeria .section-title { color: var(--white); }
-#galeria .section-subtitle { color: rgba(255,255,255,0.75); }
+#galeria .section-title { color: var(--primary); }
+#galeria .section-subtitle { color: var(--gray); }
 
 .galeria-filtros {
   display: flex;
