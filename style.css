@@ -577,9 +577,13 @@ section { padding: 96px 0; }
 #acoes { background: var(--light); }
 
 .acoes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.acoes-grid .acao-card {
+  width: 100%;
+  max-width: 680px;
 }
 
 .acao-card {
@@ -603,7 +607,7 @@ section { padding: 96px 0; }
 .acao-header-foto {
   position: relative;
   padding: 0;
-  height: 180px;
+  height: 280px;
   overflow: hidden;
 }
 
@@ -628,9 +632,9 @@ section { padding: 96px 0; }
 
 .acao-header h3 { color: var(--white); }
 
-.acao-body { padding: 1.5rem; }
+.acao-body { padding: 2rem 2.5rem; }
 
-.acao-body p { color: var(--gray); font-size: 0.95rem; margin-bottom: 1rem; }
+.acao-body p { color: var(--gray); font-size: 1.05rem; margin-bottom: 1rem; }
 
 .acao-tags {
   display: flex;
