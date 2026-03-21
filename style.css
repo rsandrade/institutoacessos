@@ -732,12 +732,12 @@ section { padding: 96px 0; }
 #contato { background: var(--light); }
 
 .contato-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  display: flex;
+  justify-content: center;
   align-items: start;
 }
 
+.contato-info { width: 100%; max-width: 600px; }
 .contato-info h3 { color: var(--primary); margin-bottom: 1rem; }
 .contato-info p { color: var(--gray); margin-bottom: 2rem; font-size: 1.05rem; }
 
