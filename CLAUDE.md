@@ -24,8 +24,11 @@ There is no build step. The site is pure HTML/CSS/JS — what is in `main` is wh
 |------|---------|
 | `index.html` | Single-page site — all sections in one file |
 | `style.css` | All styles — sections are delimited by `/* ===== SECTION ===== */` comments |
-| `script.js` | Scroll effects, animated counters, gallery lightbox, mobile nav |
+| `script.js` | Scroll effects, animated counters, gallery lightbox, mobile nav, i18n loader |
 | `img/` | All images used by the site |
+| `translations/pt.json` | Portuguese strings (default) |
+| `translations/en.json` | English strings |
+| `translations/es.json` | Spanish strings |
 | `CNAME` | Custom domain for GitHub Pages |
 
 ## Architecture
@@ -53,6 +56,20 @@ Single-page site with anchor-based navigation (`#sobre`, `#acoes`, `#casos`, etc
 Site for **Instituto Acessos e Cidadania** — a social impact organisation in Salvador, BA, that mediates access to public rights (INSS, DPU, CRAS, CAD Único, etc.) for low-income communities.
 
 The Trello board `4CIH4udo - 5-projeto-acesso.json` (in the parent directory) is the project management source. New cases, actions and content often come from there first.
+
+## Multilingual (i18n)
+
+The site supports PT / EN / ES via async JSON translation files.
+
+- **Translation keys:** flat JSON, 186 keys per language. Add the same key to all three files when adding new content.
+- **HTML attributes:**
+  - `data-i18n="key"` — sets `textContent` (plain text elements)
+  - `data-i18n-html="key"` — sets `innerHTML` (elements containing `<strong>`, `<br>`, `<span>`, etc.)
+- **Language switcher:** `PT | EN | ES` buttons in the nav (`.lang-switcher` / `.lang-btn`).
+- **Persistence:** selected language is saved to `localStorage` key `lang`.
+- **Default:** Portuguese (`pt`). Fallback on fetch error: keeps existing page content.
+
+When adding a new translatable element: add `data-i18n` to the HTML, then add the key with appropriate text to all three JSON files.
 
 ## zip archive
 
