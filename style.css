@@ -116,7 +116,7 @@ section { padding: 96px 0; }
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -166,6 +166,7 @@ section { padding: 96px 0; }
   gap: 4px;
   align-items: center;
   flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .lang-btn {
