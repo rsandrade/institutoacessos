@@ -1,3 +1,42 @@
+// ===== I18N =====
+let currentLang = localStorage.getItem('lang') || 'pt';
+let translations = {};
+
+async function loadTranslations(lang) {
+  try {
+    const res = await fetch(`translations/${lang}.json`);
+    translations = await res.json();
+  } catch (e) {
+    console.warn('Could not load translations for', lang);
+    return;
+  }
+  applyTranslations(lang);
+  localStorage.setItem('lang', lang);
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+function applyTranslations(lang) {
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[key] !== undefined) el.textContent = translations[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (translations[key] !== undefined) el.innerHTML = translations[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => loadTranslations(btn.dataset.lang));
+  });
+  loadTranslations(currentLang);
+});
+
 // ===== HEADER SCROLL =====
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
